@@ -1,0 +1,93 @@
+Comandos y configuraciones de supervivencia en Linux.
+
+Configurar direcciones ip.
+Vi /etc/network/interfaces
+
+al nombre de una interfaz de red se asigna una dirección ip
+
+32 bits
+dirección de red  dirección de host
+172.22.10           .18
+00000000.00000000.00000000.00000000
+00001001.111111111.111110111.00000011
+
+configuración IP
+addresss 192.168.30.1
+network  192.168.30.0
+netmask 255.255.255.0 
+gateway 192.168.30.101
+
+reiniciar los servicios de red (Demonio de Red)
+/etc/init.d/networking  stop
+/etc/init.d/networking  start
+/etc/init.d/networking  restart
+ifconfig → los cambios
+
+0  — 255
+255.255.255.0
+
+11111111.11111111.11111111.00000000 2 ^ 8 = 256
+
+24 
+
+11111111.11111111.11111111.00000001
+11111111.11111111.11111111.00000011
+11111111.11111111.11111111.00000010
+11111111.11111111.11111111.111111111
+
+IP: 172.22.10.3
+primer IP: 172.22.10.0  → Network
+utilizable: 172.22.10.1
+gateway: 172.22.10.60
+172.22.10.62
+
+ultimo ip: 172.22.10.63 → Broadcast
+
+
+Netmask 255.255.255.192
+11111111.11111111.11111111.11000000
+26
+2 ^ 6 = 64
+
+192.168.60.0/26
+
+Network = Dirección de Red → el primer ip
+Broadcast = limite de la Red → ultimo ip
+
+
+vi /etc/network/interfaces
+# nombre de interfaz eth0 ifconfig -a
+
+lo
+….
+allow-hotplug eth0
+iface eth0 inet static
+address 172.22.10.46
+netmask 255.255.255.192
+network 172.22.10.0
+broadcast 172.22.10.63
+gateway 172.22.10.60
+
+UHF → Transmisores TV → Broadcast 
+VHF → 
+
+Antes de instalar
+# apt-get update → actualizar los repositorios de paquetes
+# apt-get install xyz
+
+
+Práctica: 172.22.10.18
+Intalar Git control de versiones: 
+apt-get			apt-get install git git-core
+brew			brew install git
+Editor de Texto: Minimalistas
+Vim & emacs, Latex
+nano
+apt-get install vim
+Make codigo fuente de VIM
+
+Multiplexor:
+tmux
+Lenguaje de programación C, C++, Python
+apt-get install tmux
+
